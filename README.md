@@ -1,12 +1,12 @@
 # SeviçOn
 
-Sistema contratação/pestração de serviços na área civil de forma informal.
+Sistema contratação/pestração de serviços em quaisqueis possíveis áreas de forma informal.
 
 
 ## Motivação
 
 A aplicação tem como ideia principal ser o intermédio entre pessoas que precisam 
-da execução de algum serviço na área civil, sabendo que não é uma tarefa tão trivial
+da execução de algum serviço informal, sabendo que não é uma tarefa tão trivial
 chegar a um profissional que preste um serviço de qualidade e com um custo-benefício
 condizente a tal serviço.
 
