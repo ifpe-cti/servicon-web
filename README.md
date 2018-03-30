@@ -1,19 +1,19 @@
 # SeviçOn
 
-Sistema contratação/pestração de serviços na área cívil de forma informal.
+Sistema contratação/pestração de serviços na área civil de forma informal.
 
 
 ## Motivação
 
 A aplicação tem como ideia principal ser o intermédio entre pessoas que precisam 
-da execução de algum serviço na área civíl, sabendo que não é uma tarefa tão trivial
+da execução de algum serviço na área civil, sabendo que não é uma tarefa tão trivial
 chegar a um profissional que preste um serviço de qualidade e com um custo-benefício
 condizente a tal serviço.
 
 
 ## Soluções existentes
 
-Um aplicativo semelhante é o getNinjas. O mesmo possui uma serie de requesitos e procediemtnos
+Um aplicativo semelhante é o *[getNinjas](https://www.getninjas.com.br)*. O mesmo possui uma serie de requesitos e procediemtnos
 antes de realmente chegar a ter um contato com o profissional e virce-versa, e uma interface não tão simples
 de ser utilizada. 
 
