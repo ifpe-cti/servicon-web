@@ -20,8 +20,8 @@ de ser utilizada.
 
 ## Inovação
 
---
-
+A aplicação tem como diferencial a sua usabilidade, que o torna mais fácil de usar, diferente das outras aplicações semelhantes, no ServiçOn não se precisa de muitos dados para contratar um serviço. E também,tem como diferencial a forma de avaliar os profissionais
+e obter informações prévias sobre atendimento,o serviço propriamente dito e outras informações úteis de uma maneira mais simples e automatizada.
 
 ## Público alvo
 
