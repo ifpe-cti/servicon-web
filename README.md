@@ -77,5 +77,5 @@ será monetizado e comissionado indicações de profissionais dentro da platafor
 
 ## Licença
 
-Projeto será lançado sob a licença *[MIT](https://opensource.org/licenses/MIT)*.
+Projeto será lançado sob a licença *[MIT](https://github.com/ifpe-cti/servicon-web/blob/master/LICENSE)*.
 
