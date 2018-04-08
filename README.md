@@ -1,4 +1,4 @@
-# SeviçOn
+# ServiçOn
 
 Sistema contratação/pestração de serviços em quaisqueis possíveis áreas de forma informal.
 
@@ -69,10 +69,10 @@ será monetizado e comissionado indicações de profissionais dentro da platafor
 
 ## Contribuidores
 
-- [@fabriciofx](https://github.com/fabriciofx) Fabrício Cabral (Orientador)
-- [@lucasmendsc](https://github.com/lucasmendsc) Lucas Mendes (Arquiteto de projeto e desenvolvedor)
-- [@SebastianIzydorio](https://github.com/SebastianIzydorio) Sebastião Izidorio (Desenvolvedor)
-- [@MarcelaCCM](https://github.com/MarcelaCCM) Marcela Cardoso (Desenvolvedora)
+- [@fabriciofx](https://github.com/fabriciofx) como Fabrício Cabral (Orientador)
+- [@lucasmendsc](https://github.com/lucasmendsc) como Lucas Mendes (Arquiteto de projeto e desenvolvedor)
+- [@SebastianIzydorio](https://github.com/SebastianIzydorio) como Sebastião Izidorio (Desenvolvedor)
+- [@MarcelaCCM](https://github.com/MarcelaCCM) como Marcela Cardoso (Desenvolvedora)
 
 
 ## Licença
