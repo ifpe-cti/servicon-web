@@ -29,6 +29,7 @@ import java.util.Objects;
  */
 public class Endereco {
     
+    private int idEndereco;
     private String estado;
     private String cidade;
     private String bairro;
@@ -36,13 +37,18 @@ public class Endereco {
     private String rua;
     private int numero;
 
-    public Endereco(String estado, String cidade, String bairro, String cep, String rua, int numero) {
+    public Endereco(int idEndereco, String estado, String cidade, String bairro, String cep, String rua, int numero) {
+        this.idEndereco = idEndereco;
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;
         this.cep = cep;
         this.rua = rua;
         this.numero = numero;
+    }
+
+    public int getIdEndereco() {
+        return idEndereco;
     }
 
     public String getEstado() {
@@ -67,6 +73,10 @@ public class Endereco {
 
     public int getNumero() {
         return numero;
+    }
+
+    public void setIdEndereco(int idEndereco) {
+        this.idEndereco = idEndereco;
     }
 
     public void setEstado(String estado) {
@@ -95,7 +105,8 @@ public class Endereco {
 
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 5;
+        hash = 89 * hash + this.idEndereco;
         hash = 89 * hash + Objects.hashCode(this.estado);
         hash = 89 * hash + Objects.hashCode(this.cidade);
         hash = 89 * hash + Objects.hashCode(this.bairro);
@@ -117,6 +128,9 @@ public class Endereco {
             return false;
         }
         final Endereco other = (Endereco) obj;
+        if (this.idEndereco != other.idEndereco) {
+            return false;
+        }
         if (this.numero != other.numero) {
             return false;
         }
@@ -140,9 +154,9 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco{" + "estado=" + estado + ", cidade=" + cidade + ", bairro=" + bairro + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + '}';
+        return "Endereco{" + "idEndereco=" + idEndereco + ", estado=" + estado + ", cidade=" + cidade + ", bairro=" + bairro + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + '}';
     }
-    
+
     
     
 }
