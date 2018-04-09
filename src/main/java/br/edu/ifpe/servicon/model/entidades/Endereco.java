@@ -21,10 +21,142 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 package br.edu.ifpe.servicon.model.entidades;
 
+import java.util.Objects;
+
 /**
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
 public class Endereco {
+    
+    private int idEndereco;
+    private String estado;
+    private String cidade;
+    private String bairro;
+    private String cep;
+    private String rua;
+    private int numero;
+
+    public Endereco(int idEndereco, String estado, String cidade, String bairro, String cep, String rua, int numero) {
+        this.idEndereco = idEndereco;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.cep = cep;
+        this.rua = rua;
+        this.numero = numero;
+    }
+
+    public int getIdEndereco() {
+        return idEndereco;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public String getRua() {
+        return rua;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setIdEndereco(int idEndereco) {
+        this.idEndereco = idEndereco;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + this.idEndereco;
+        hash = 89 * hash + Objects.hashCode(this.estado);
+        hash = 89 * hash + Objects.hashCode(this.cidade);
+        hash = 89 * hash + Objects.hashCode(this.bairro);
+        hash = 89 * hash + Objects.hashCode(this.cep);
+        hash = 89 * hash + Objects.hashCode(this.rua);
+        hash = 89 * hash + this.numero;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Endereco other = (Endereco) obj;
+        if (this.idEndereco != other.idEndereco) {
+            return false;
+        }
+        if (this.numero != other.numero) {
+            return false;
+        }
+        if (!Objects.equals(this.estado, other.estado)) {
+            return false;
+        }
+        if (!Objects.equals(this.cidade, other.cidade)) {
+            return false;
+        }
+        if (!Objects.equals(this.bairro, other.bairro)) {
+            return false;
+        }
+        if (!Objects.equals(this.cep, other.cep)) {
+            return false;
+        }
+        if (!Objects.equals(this.rua, other.rua)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Endereco{" + "idEndereco=" + idEndereco + ", estado=" + estado + ", cidade=" + cidade + ", bairro=" + bairro + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + '}';
+    }
+
+    
     
 }
