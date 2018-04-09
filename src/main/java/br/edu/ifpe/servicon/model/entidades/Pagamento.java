@@ -21,10 +21,130 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 package br.edu.ifpe.servicon.model.entidades;
 
+import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
 public class Pagamento {
+    
+    private int idPagamento;
+    private Cliente cliente;
+    private Profissional profissional;
+    private boolean status;
+    private Servico[] servicos;
+    private BigDecimal valor;
+
+    public Pagamento(int idPagamento, Cliente cliente, Profissional profissional, boolean status, Servico[] servicos, BigDecimal valor) {
+        this.idPagamento = idPagamento;
+        this.cliente = cliente;
+        this.profissional = profissional;
+        this.status = status;
+        this.servicos = servicos;
+        this.valor = valor;
+    }
+
+    public int getIdPagamento() {
+        return idPagamento;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Profissional getProfissional() {
+        return profissional;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public Servico[] getServicos() {
+        return servicos;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setIdPagamento(int idPagamento) {
+        this.idPagamento = idPagamento;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setProfissional(Profissional profissional) {
+        this.profissional = profissional;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public void setServicos(Servico[] servicos) {
+        this.servicos = servicos;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + this.idPagamento;
+        hash = 97 * hash + Objects.hashCode(this.cliente);
+        hash = 97 * hash + Objects.hashCode(this.profissional);
+        hash = 97 * hash + (this.status ? 1 : 0);
+        hash = 97 * hash + Arrays.deepHashCode(this.servicos);
+        hash = 97 * hash + Objects.hashCode(this.valor);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Pagamento other = (Pagamento) obj;
+        if (this.idPagamento != other.idPagamento) {
+            return false;
+        }
+        if (this.status != other.status) {
+            return false;
+        }
+        if (!Objects.equals(this.cliente, other.cliente)) {
+            return false;
+        }
+        if (!Objects.equals(this.profissional, other.profissional)) {
+            return false;
+        }
+        if (!Arrays.deepEquals(this.servicos, other.servicos)) {
+            return false;
+        }
+        if (!Objects.equals(this.valor, other.valor)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Pagamento{" + "idPagamento=" + idPagamento + ", cliente=" + cliente + ", profissional=" + profissional + ", status=" + status + ", servicos=" + servicos + ", valor=" + valor + '}';
+    }
+    
+    
     
 }
