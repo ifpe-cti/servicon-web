@@ -35,15 +35,15 @@ public class Pagamento {
     private Cliente cliente;
     private Profissional profissional;
     private boolean status;
-    private Servico[] servicos;
+    private Servico servico;
     private BigDecimal valor;
 
-    public Pagamento(int idPagamento, Cliente cliente, Profissional profissional, boolean status, Servico[] servicos, BigDecimal valor) {
+    public Pagamento(int idPagamento, Cliente cliente, Profissional profissional, boolean status, Servico servico, BigDecimal valor) {
         this.idPagamento = idPagamento;
         this.cliente = cliente;
         this.profissional = profissional;
         this.status = status;
-        this.servicos = servicos;
+        this.servico = servico;
         this.valor = valor;
     }
 
@@ -63,8 +63,8 @@ public class Pagamento {
         return status;
     }
 
-    public Servico[] getServicos() {
-        return servicos;
+    public Servico getServico() {
+        return servico;
     }
 
     public BigDecimal getValor() {
@@ -87,8 +87,8 @@ public class Pagamento {
         this.status = status;
     }
 
-    public void setServicos(Servico[] servicos) {
-        this.servicos = servicos;
+    public void setServico(Servico servico) {
+        this.servico = servico;
     }
 
     public void setValor(BigDecimal valor) {
@@ -97,13 +97,13 @@ public class Pagamento {
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + this.idPagamento;
-        hash = 97 * hash + Objects.hashCode(this.cliente);
-        hash = 97 * hash + Objects.hashCode(this.profissional);
-        hash = 97 * hash + (this.status ? 1 : 0);
-        hash = 97 * hash + Arrays.deepHashCode(this.servicos);
-        hash = 97 * hash + Objects.hashCode(this.valor);
+        int hash = 7;
+        hash = 41 * hash + this.idPagamento;
+        hash = 41 * hash + Objects.hashCode(this.cliente);
+        hash = 41 * hash + Objects.hashCode(this.profissional);
+        hash = 41 * hash + (this.status ? 1 : 0);
+        hash = 41 * hash + Objects.hashCode(this.servico);
+        hash = 41 * hash + Objects.hashCode(this.valor);
         return hash;
     }
 
@@ -131,7 +131,7 @@ public class Pagamento {
         if (!Objects.equals(this.profissional, other.profissional)) {
             return false;
         }
-        if (!Arrays.deepEquals(this.servicos, other.servicos)) {
+        if (!Objects.equals(this.servico, other.servico)) {
             return false;
         }
         if (!Objects.equals(this.valor, other.valor)) {
@@ -142,8 +142,10 @@ public class Pagamento {
 
     @Override
     public String toString() {
-        return "Pagamento{" + "idPagamento=" + idPagamento + ", cliente=" + cliente + ", profissional=" + profissional + ", status=" + status + ", servicos=" + servicos + ", valor=" + valor + '}';
+        return "Pagamento{" + "idPagamento=" + idPagamento + ", cliente=" + cliente + ", profissional=" + profissional + ", status=" + status + ", servico=" + servico + ", valor=" + valor + '}';
     }
+
+    
     
     
     
