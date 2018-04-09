@@ -32,16 +32,12 @@ import java.util.Objects;
 public class Pagamento {
     
     private int idPagamento;
-    private Cliente cliente;
-    private Profissional profissional;
     private boolean status;
     private Servico servico;
     private BigDecimal valor;
 
-    public Pagamento(int idPagamento, Cliente cliente, Profissional profissional, boolean status, Servico servico, BigDecimal valor) {
+    public Pagamento(int idPagamento, boolean status, Servico servico, BigDecimal valor) {
         this.idPagamento = idPagamento;
-        this.cliente = cliente;
-        this.profissional = profissional;
         this.status = status;
         this.servico = servico;
         this.valor = valor;
@@ -49,14 +45,6 @@ public class Pagamento {
 
     public int getIdPagamento() {
         return idPagamento;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public Profissional getProfissional() {
-        return profissional;
     }
 
     public boolean isStatus() {
@@ -69,18 +57,6 @@ public class Pagamento {
 
     public BigDecimal getValor() {
         return valor;
-    }
-
-    public void setIdPagamento(int idPagamento) {
-        this.idPagamento = idPagamento;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-    public void setProfissional(Profissional profissional) {
-        this.profissional = profissional;
     }
 
     public void setStatus(boolean status) {
@@ -142,7 +118,7 @@ public class Pagamento {
 
     @Override
     public String toString() {
-        return "Pagamento{" + "idPagamento=" + idPagamento + ", cliente=" + cliente + ", profissional=" + profissional + ", status=" + status + ", servico=" + servico + ", valor=" + valor + '}';
+        return "Pagamento{" + "idPagamento=" + idPagamento + ", "status=" + status + ", servico=" + servico + ", valor=" + valor + '}';
     }
 
     
