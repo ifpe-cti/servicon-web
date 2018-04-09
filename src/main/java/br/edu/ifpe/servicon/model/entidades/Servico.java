@@ -34,11 +34,15 @@ public class Servico {
     private int idServico;
     private Timestamp dataHorario;
     private BigDecimal valor;
+    private Cliente cliente;
+    private Profissional profissional;
 
-    public Servico(int idServico, Timestamp dataHorario, BigDecimal valor) {
+    public Servico(int idServico, Timestamp dataHorario, BigDecimal valor, Cliente cliente, Profissional profissional) {
         this.idServico = idServico;
         this.dataHorario = dataHorario;
         this.valor = valor;
+        this.cliente = cliente;
+        this.profissional = profissional;
     }
 
     public int getIdServico() {
@@ -53,6 +57,14 @@ public class Servico {
         return valor;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Profissional getProfissional() {
+        return profissional;
+    }
+
     public void setIdServico(int idServico) {
         this.idServico = idServico;
     }
@@ -65,12 +77,22 @@ public class Servico {
         this.valor = valor;
     }
 
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setProfissional(Profissional profissional) {
+        this.profissional = profissional;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + this.idServico;
-        hash = 37 * hash + Objects.hashCode(this.dataHorario);
-        hash = 37 * hash + Objects.hashCode(this.valor);
+        int hash = 3;
+        hash = 43 * hash + this.idServico;
+        hash = 43 * hash + Objects.hashCode(this.dataHorario);
+        hash = 43 * hash + Objects.hashCode(this.valor);
+        hash = 43 * hash + Objects.hashCode(this.cliente);
+        hash = 43 * hash + Objects.hashCode(this.profissional);
         return hash;
     }
 
@@ -95,14 +117,20 @@ public class Servico {
         if (!Objects.equals(this.valor, other.valor)) {
             return false;
         }
+        if (!Objects.equals(this.cliente, other.cliente)) {
+            return false;
+        }
+        if (!Objects.equals(this.profissional, other.profissional)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Servico{" + "idServico=" + idServico + ", dataHorario=" + dataHorario + ", valor=" + valor + '}';
+        return "Servico{" + "idServico=" + idServico + ", dataHorario=" + dataHorario + ", valor=" + valor + ", cliente=" + cliente + ", profissional=" + profissional + '}';
     }
-    
+
     
     
 }
