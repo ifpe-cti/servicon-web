@@ -29,18 +29,24 @@ import java.util.Objects;
  */
 public class Cliente {
     
+    private int id_clinte;
     private String nome;
     private String telefone;
     private String email;
     private String cpf;
     private String dataNascimento;
 
-    public Cliente(String nome, String telefone, String email, String cpf, String dataNascimento) {
+    public Cliente(int id_clinte, String nome, String telefone, String email, String cpf, String dataNascimento) {
+        this.id_clinte = id_clinte;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.cpf = cpf;
         this.dataNascimento = dataNascimento;
+    }
+
+    public int getId_clinte() {
+        return id_clinte;
     }
 
     public String getNome() {
@@ -61,6 +67,10 @@ public class Cliente {
 
     public String getDataNascimento() {
         return dataNascimento;
+    }
+
+    public void setId_clinte(int id_clinte) {
+        this.id_clinte = id_clinte;
     }
 
     public void setNome(String nome) {
@@ -85,12 +95,13 @@ public class Cliente {
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 47 * hash + Objects.hashCode(this.nome);
-        hash = 47 * hash + Objects.hashCode(this.telefone);
-        hash = 47 * hash + Objects.hashCode(this.email);
-        hash = 47 * hash + Objects.hashCode(this.cpf);
-        hash = 47 * hash + Objects.hashCode(this.dataNascimento);
+        int hash = 7;
+        hash = 61 * hash + this.id_clinte;
+        hash = 61 * hash + Objects.hashCode(this.nome);
+        hash = 61 * hash + Objects.hashCode(this.telefone);
+        hash = 61 * hash + Objects.hashCode(this.email);
+        hash = 61 * hash + Objects.hashCode(this.cpf);
+        hash = 61 * hash + Objects.hashCode(this.dataNascimento);
         return hash;
     }
 
@@ -106,6 +117,9 @@ public class Cliente {
             return false;
         }
         final Cliente other = (Cliente) obj;
+        if (this.id_clinte != other.id_clinte) {
+            return false;
+        }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
@@ -126,8 +140,10 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + '}';
+        return "Cliente{" + "id_clinte=" + id_clinte + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + '}';
     }
+
+    
     
     
     
