@@ -21,10 +21,88 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 package br.edu.ifpe.servicon.model.entidades;
 
+import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.util.Objects;
+
 /**
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
 public class Servico {
+    
+    private int idServico;
+    private Timestamp dataHorario;
+    private BigDecimal valor;
+
+    public Servico(int idServico, Timestamp dataHorario, BigDecimal valor) {
+        this.idServico = idServico;
+        this.dataHorario = dataHorario;
+        this.valor = valor;
+    }
+
+    public int getIdServico() {
+        return idServico;
+    }
+
+    public Timestamp getDataHorario() {
+        return dataHorario;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
+
+    public void setIdServico(int idServico) {
+        this.idServico = idServico;
+    }
+
+    public void setDataHorario(Timestamp dataHorario) {
+        this.dataHorario = dataHorario;
+    }
+
+    public void setValor(BigDecimal valor) {
+        this.valor = valor;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 37 * hash + this.idServico;
+        hash = 37 * hash + Objects.hashCode(this.dataHorario);
+        hash = 37 * hash + Objects.hashCode(this.valor);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Servico other = (Servico) obj;
+        if (this.idServico != other.idServico) {
+            return false;
+        }
+        if (!Objects.equals(this.dataHorario, other.dataHorario)) {
+            return false;
+        }
+        if (!Objects.equals(this.valor, other.valor)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Servico{" + "idServico=" + idServico + ", dataHorario=" + dataHorario + ", valor=" + valor + '}';
+    }
+    
+    
     
 }
