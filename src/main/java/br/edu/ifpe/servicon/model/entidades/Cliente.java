@@ -21,10 +21,114 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 package br.edu.ifpe.servicon.model.entidades;
 
+import java.util.Objects;
+
 /**
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
 public class Cliente {
+    
+    private String nome;
+    private String telefone;
+    private String email;
+    private String cpf;
+    private String dataNascimento;
+
+    public Cliente(String nome, String telefone, String email, String cpf, String dataNascimento) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 47 * hash + Objects.hashCode(this.nome);
+        hash = 47 * hash + Objects.hashCode(this.telefone);
+        hash = 47 * hash + Objects.hashCode(this.email);
+        hash = 47 * hash + Objects.hashCode(this.cpf);
+        hash = 47 * hash + Objects.hashCode(this.dataNascimento);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.telefone, other.telefone)) {
+            return false;
+        }
+        if (!Objects.equals(this.email, other.email)) {
+            return false;
+        }
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" + "nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + '}';
+    }
+    
+    
     
 }
