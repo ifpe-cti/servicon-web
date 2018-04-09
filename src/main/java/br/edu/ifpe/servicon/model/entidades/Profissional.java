@@ -30,15 +30,15 @@ import java.util.Objects;
  */
 public class Profissional {
     
-    private int id_profissional;
+    private int idProfissional;
     private String nome;
     private BigDecimal avaliacao;
     private String telefone;
     private String email;
     private String dataNascimento;
 
-    public Profissional(int id_profissional, String nome, BigDecimal avaliacao, String telefone, String email, String dataNascimento) {
-        this.id_profissional = id_profissional;
+    public Profissional(int idProfissional, String nome, BigDecimal avaliacao, String telefone, String email, String dataNascimento) {
+        this.idProfissional = idProfissional;
         this.nome = nome;
         this.avaliacao = avaliacao;
         this.telefone = telefone;
@@ -46,8 +46,8 @@ public class Profissional {
         this.dataNascimento = dataNascimento;
     }
 
-    public int getId_profissional() {
-        return id_profissional;
+    public int getIdProfissional() {
+        return idProfissional;
     }
 
     public String getNome() {
@@ -70,8 +70,8 @@ public class Profissional {
         return dataNascimento;
     }
 
-    public void setId_profissional(int id_profissional) {
-        this.id_profissional = id_profissional;
+    public void setIdProfissional(int idProfissional) {
+        this.idProfissional = idProfissional;
     }
 
     public void setNome(String nome) {
@@ -97,12 +97,12 @@ public class Profissional {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + this.id_profissional;
-        hash = 53 * hash + Objects.hashCode(this.nome);
-        hash = 53 * hash + Objects.hashCode(this.avaliacao);
-        hash = 53 * hash + Objects.hashCode(this.telefone);
-        hash = 53 * hash + Objects.hashCode(this.email);
-        hash = 53 * hash + Objects.hashCode(this.dataNascimento);
+        hash = 97 * hash + this.idProfissional;
+        hash = 97 * hash + Objects.hashCode(this.nome);
+        hash = 97 * hash + Objects.hashCode(this.avaliacao);
+        hash = 97 * hash + Objects.hashCode(this.telefone);
+        hash = 97 * hash + Objects.hashCode(this.email);
+        hash = 97 * hash + Objects.hashCode(this.dataNascimento);
         return hash;
     }
 
@@ -118,7 +118,7 @@ public class Profissional {
             return false;
         }
         final Profissional other = (Profissional) obj;
-        if (this.id_profissional != other.id_profissional) {
+        if (this.idProfissional != other.idProfissional) {
             return false;
         }
         if (!Objects.equals(this.nome, other.nome)) {
@@ -141,9 +141,9 @@ public class Profissional {
 
     @Override
     public String toString() {
-        return "Profissional{" + "id_profissional=" + id_profissional + ", nome=" + nome + ", avaliacao=" + avaliacao + ", telefone=" + telefone + ", email=" + email + ", dataNascimento=" + dataNascimento + '}';
+        return "Profissional{" + "idProfissional=" + idProfissional + ", nome=" + nome + ", avaliacao=" + avaliacao + ", telefone=" + telefone + ", email=" + email + ", dataNascimento=" + dataNascimento + '}';
     }
-    
+
     
     
 }
