@@ -1,6 +1,6 @@
 /* The MIT License (MIT)
 
-Copyright (C) 2018 ServiçOn Lucas Mendes Cavalcanti, Marcela Cardoso Melo,
+Copyright (C) 2018 Serviï¿½On Lucas Mendes Cavalcanti, Marcela Cardoso Melo,
 Sebastiao Izidorio de Oliveira Neto, Fabricio Cabral (Orientador)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,3 +20,18 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.*/
+package br.edu.ifpe.servicon.model.interfaces;
+
+import java.util.List;
+
+/**
+ *
+ * @author Lucas Mendes <lucas.mendes147@live.com>
+ */
+public interface DAO<T> {
+    void adicionar(T t);
+    T recuperar(int codigo);
+    void atualizar(T t);
+    void deletar(T t);
+    List<T> recuperarTodos();
+}
