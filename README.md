@@ -43,6 +43,9 @@ A principal fonte de monetização vai se dar quando um serviço for prestado, u
 pequena parte de comissão irá para a monetização e também será monetizado e
 comissionado indicações de profissionais dentro da plataforma.
 
+## Diagrama de classes
+![alt text](https://github.com/ifpe-cti/servicon-web/blob/master/docs/servi%C3%A7On-plantuml.png)
+
 ## Ferramentas utilizadas
 
 1. Linguagens  
