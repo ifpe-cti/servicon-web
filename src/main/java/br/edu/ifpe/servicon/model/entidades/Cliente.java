@@ -29,7 +29,7 @@ import java.util.Objects;
  */
 public class Cliente {
     
-    private int idClinte;
+    private int idCliente;
     private String nome;
     private String telefone;
     private String email;
