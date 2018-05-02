@@ -29,7 +29,7 @@ import java.util.Objects;
  */
 public class Endereco {
     
-    private int idEndereco;
+    private int codigo;
     private String estado;
     private String cidade;
     private String bairro;
@@ -37,8 +37,8 @@ public class Endereco {
     private String rua;
     private int numero;
 
-    public Endereco(int idEndereco, String estado, String cidade, String bairro, String cep, String rua, int numero) {
-        this.idEndereco = idEndereco;
+    public Endereco(int codigo, String estado, String cidade, String bairro, String cep, String rua, int numero) {
+        this.codigo = codigo;
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;
@@ -47,56 +47,56 @@ public class Endereco {
         this.numero = numero;
     }
 
-    public int getIdEndereco() {
-        return idEndereco;
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getEstado() {
         return estado;
     }
 
-    public String getCidade() {
-        return cidade;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public String getRua() {
-        return rua;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setIdEndereco(int idEndereco) {
-        this.idEndereco = idEndereco;
-    }
-
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    public String getCidade() {
+        return cidade;
     }
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
 
+    public String getBairro() {
+        return bairro;
+    }
+
     public void setBairro(String bairro) {
         this.bairro = bairro;
+    }
+
+    public String getCep() {
+        return cep;
     }
 
     public void setCep(String cep) {
         this.cep = cep;
     }
 
+    public String getRua() {
+        return rua;
+    }
+
     public void setRua(String rua) {
         this.rua = rua;
+    }
+
+    public int getNumero() {
+        return numero;
     }
 
     public void setNumero(int numero) {
@@ -106,7 +106,7 @@ public class Endereco {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 89 * hash + this.idEndereco;
+        hash = 89 * hash + this.codigo;
         hash = 89 * hash + Objects.hashCode(this.estado);
         hash = 89 * hash + Objects.hashCode(this.cidade);
         hash = 89 * hash + Objects.hashCode(this.bairro);
@@ -128,7 +128,7 @@ public class Endereco {
             return false;
         }
         final Endereco other = (Endereco) obj;
-        if (this.idEndereco != other.idEndereco) {
+        if (this.codigo != other.codigo) {
             return false;
         }
         if (this.numero != other.numero) {
@@ -154,9 +154,6 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco{" + "idEndereco=" + idEndereco + ", estado=" + estado + ", cidade=" + cidade + ", bairro=" + bairro + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + '}';
+        return "Endereco{" + "codigo=" + codigo + ", estado=" + estado + ", cidade=" + cidade + ", bairro=" + bairro + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + '}';
     }
-
-    
-    
 }
