@@ -1,6 +1,7 @@
 /*MIT License
 
-Copyright (c) 2018 Fabricio Barros Cabral, Lucas Mendes Cavalcanti, Marcela Cardoso Melo, Sebastiao Izidorio de Oliveira Neto
+Copyright (c) 2018 Fabricio Barros Cabral, Lucas Mendes Cavalcanti, 
+Marcela Cardoso Melo, Sebastiao Izidorio de Oliveira Neto
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,31 +29,23 @@ import java.util.Objects;
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
 public class Endereco {
-    
     private int codigo;
     private String estado;
     private String cidade;
     private String bairro;
-    private String cep;
-    private String rua;
-    private int numero;
+    private String logradouro;
 
-    public Endereco(int codigo, String estado, String cidade, String bairro, String cep, String rua, int numero) {
+    public Endereco(int codigo, String estado, String cidade, String bairro,
+            String logradouro) {
         this.codigo = codigo;
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;
-        this.cep = cep;
-        this.rua = rua;
-        this.numero = numero;
+        this.logradouro = logradouro;
     }
 
     public int getCodigo() {
         return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
 
     public String getEstado() {
@@ -79,40 +72,22 @@ public class Endereco {
         this.bairro = bairro;
     }
 
-    public String getCep() {
-        return cep;
+    public String getLogradouro() {
+        return logradouro;
     }
 
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getRua() {
-        return rua;
-    }
-
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 89 * hash + this.codigo;
-        hash = 89 * hash + Objects.hashCode(this.estado);
-        hash = 89 * hash + Objects.hashCode(this.cidade);
-        hash = 89 * hash + Objects.hashCode(this.bairro);
-        hash = 89 * hash + Objects.hashCode(this.cep);
-        hash = 89 * hash + Objects.hashCode(this.rua);
-        hash = 89 * hash + this.numero;
+        hash = 79 * hash + this.codigo;
+        hash = 79 * hash + Objects.hashCode(this.estado);
+        hash = 79 * hash + Objects.hashCode(this.cidade);
+        hash = 79 * hash + Objects.hashCode(this.bairro);
+        hash = 79 * hash + Objects.hashCode(this.logradouro);
         return hash;
     }
 
@@ -131,9 +106,6 @@ public class Endereco {
         if (this.codigo != other.codigo) {
             return false;
         }
-        if (this.numero != other.numero) {
-            return false;
-        }
         if (!Objects.equals(this.estado, other.estado)) {
             return false;
         }
@@ -143,10 +115,7 @@ public class Endereco {
         if (!Objects.equals(this.bairro, other.bairro)) {
             return false;
         }
-        if (!Objects.equals(this.cep, other.cep)) {
-            return false;
-        }
-        if (!Objects.equals(this.rua, other.rua)) {
+        if (!Objects.equals(this.logradouro, other.logradouro)) {
             return false;
         }
         return true;
@@ -154,6 +123,8 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco{" + "codigo=" + codigo + ", estado=" + estado + ", cidade=" + cidade + ", bairro=" + bairro + ", cep=" + cep + ", rua=" + rua + ", numero=" + numero + '}';
-    }
+        return "Endereco{" + "codigo=" + codigo + ", estado=" + estado +
+                ", cidade=" + cidade + ", bairro=" + bairro + ", logradouro=" +
+                logradouro + '}';
+    } 
 }

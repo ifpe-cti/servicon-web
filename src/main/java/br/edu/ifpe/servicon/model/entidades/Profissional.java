@@ -22,7 +22,6 @@ SOFTWARE.*/
 package br.edu.ifpe.servicon.model.entidades;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -32,35 +31,32 @@ import java.util.Objects;
 public class Profissional {
     
     private Integer codigo;
-    private String nome;
+    private Pessoa pessoa;
+    private Endereco endereco;
     private BigDecimal avaliacao;
-    private String telefone;
-    private String email;
-    private Date dataNascimento;
 
-    public Profissional(Integer codigo, String nome, BigDecimal avaliacao, String telefone, String email, Date dataNascimento) {
+    public Profissional(Integer codigo, Pessoa pessoa, Endereco endereco, 
+            BigDecimal avaliacao) {
         this.codigo = codigo;
-        this.nome = nome;
-        this.avaliacao = avaliacao;
-        this.telefone = telefone;
-        this.email = email;
-        this.dataNascimento = dataNascimento;
+        this.pessoa = pessoa;
+        this.endereco = endereco;
+        this.avaliacao = avaliacao; 
     }
 
     public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public String getNome() {
-        return nome;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public BigDecimal getAvaliacao() {
@@ -71,39 +67,13 @@ public class Profissional {
         this.avaliacao = avaliacao;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.codigo);
-        hash = 59 * hash + Objects.hashCode(this.nome);
-        hash = 59 * hash + Objects.hashCode(this.avaliacao);
-        hash = 59 * hash + Objects.hashCode(this.telefone);
-        hash = 59 * hash + Objects.hashCode(this.email);
-        hash = 59 * hash + Objects.hashCode(this.dataNascimento);
+        hash = 97 * hash + Objects.hashCode(this.codigo);
+        hash = 97 * hash + Objects.hashCode(this.pessoa);
+        hash = 97 * hash + Objects.hashCode(this.endereco);
+        hash = 97 * hash + Objects.hashCode(this.avaliacao);
         return hash;
     }
 
@@ -119,22 +89,16 @@ public class Profissional {
             return false;
         }
         final Profissional other = (Profissional) obj;
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefone, other.telefone)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
-        if (!Objects.equals(this.avaliacao, other.avaliacao)) {
+        if (!Objects.equals(this.pessoa, other.pessoa)) {
             return false;
         }
-        if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
+        if (!Objects.equals(this.endereco, other.endereco)) {
+            return false;
+        }
+        if (!Objects.equals(this.avaliacao, other.avaliacao)) {
             return false;
         }
         return true;
@@ -142,6 +106,8 @@ public class Profissional {
 
     @Override
     public String toString() {
-        return "Profissional{" + "codigo=" + codigo + ", nome=" + nome + ", avaliacao=" + avaliacao + ", telefone=" + telefone + ", email=" + email + ", dataNascimento=" + dataNascimento + '}';
-    }
+        return "Profissional{" + "codigo=" + codigo + ", pessoa=" + 
+                pessoa + ", endereco=" + endereco + ", avaliacao=" 
+                + avaliacao + '}';
+    }  
 }
