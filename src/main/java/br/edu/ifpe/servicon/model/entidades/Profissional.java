@@ -22,6 +22,7 @@ SOFTWARE.*/
 package br.edu.ifpe.servicon.model.entidades;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -30,15 +31,15 @@ import java.util.Objects;
  */
 public class Profissional {
     
-    private int idProfissional;
+    private Integer codigo;
     private String nome;
     private BigDecimal avaliacao;
     private String telefone;
     private String email;
-    private String dataNascimento;
+    private Date dataNascimento;
 
-    public Profissional(int idProfissional, String nome, BigDecimal avaliacao, String telefone, String email, String dataNascimento) {
-        this.idProfissional = idProfissional;
+    public Profissional(Integer codigo, String nome, BigDecimal avaliacao, String telefone, String email, Date dataNascimento) {
+        this.codigo = codigo;
         this.nome = nome;
         this.avaliacao = avaliacao;
         this.telefone = telefone;
@@ -46,63 +47,63 @@ public class Profissional {
         this.dataNascimento = dataNascimento;
     }
 
-    public int getIdProfissional() {
-        return idProfissional;
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public BigDecimal getAvaliacao() {
-        return avaliacao;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setIdProfissional(int idProfissional) {
-        this.idProfissional = idProfissional;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public BigDecimal getAvaliacao() {
+        return avaliacao;
     }
 
     public void setAvaliacao(BigDecimal avaliacao) {
         this.avaliacao = avaliacao;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + this.idProfissional;
-        hash = 97 * hash + Objects.hashCode(this.nome);
-        hash = 97 * hash + Objects.hashCode(this.avaliacao);
-        hash = 97 * hash + Objects.hashCode(this.telefone);
-        hash = 97 * hash + Objects.hashCode(this.email);
-        hash = 97 * hash + Objects.hashCode(this.dataNascimento);
+        hash = 59 * hash + Objects.hashCode(this.codigo);
+        hash = 59 * hash + Objects.hashCode(this.nome);
+        hash = 59 * hash + Objects.hashCode(this.avaliacao);
+        hash = 59 * hash + Objects.hashCode(this.telefone);
+        hash = 59 * hash + Objects.hashCode(this.email);
+        hash = 59 * hash + Objects.hashCode(this.dataNascimento);
         return hash;
     }
 
@@ -118,9 +119,6 @@ public class Profissional {
             return false;
         }
         final Profissional other = (Profissional) obj;
-        if (this.idProfissional != other.idProfissional) {
-            return false;
-        }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
@@ -130,10 +128,13 @@ public class Profissional {
         if (!Objects.equals(this.email, other.email)) {
             return false;
         }
-        if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
+        if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
         if (!Objects.equals(this.avaliacao, other.avaliacao)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
             return false;
         }
         return true;
@@ -141,9 +142,6 @@ public class Profissional {
 
     @Override
     public String toString() {
-        return "Profissional{" + "idProfissional=" + idProfissional + ", nome=" + nome + ", avaliacao=" + avaliacao + ", telefone=" + telefone + ", email=" + email + ", dataNascimento=" + dataNascimento + '}';
+        return "Profissional{" + "codigo=" + codigo + ", nome=" + nome + ", avaliacao=" + avaliacao + ", telefone=" + telefone + ", email=" + email + ", dataNascimento=" + dataNascimento + '}';
     }
-
-    
-    
 }

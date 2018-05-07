@@ -29,15 +29,15 @@ import java.util.Objects;
  */
 public class Cliente {
     
-    private int idClinte;
+    private Integer codigo;
     private String nome;
     private String telefone;
     private String email;
     private String cpf;
     private String dataNascimento;
 
-    public Cliente(int idClinte, String nome, String telefone, String email, String cpf, String dataNascimento) {
-        this.idClinte = idClinte;
+    public Cliente(Integer codigo, String nome, String telefone, String email, String cpf, String dataNascimento) {
+        this.codigo = codigo;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -45,48 +45,48 @@ public class Cliente {
         this.dataNascimento = dataNascimento;
     }
 
-    public int getIdClinte() {
-        return idClinte;
+    public Integer getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(Integer codigo) {
+        this.codigo = codigo;
     }
 
     public String getNome() {
         return nome;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setIdClinte(int idClinte) {
-        this.idClinte = idClinte;
-    }
-
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
     }
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
     }
 
     public void setDataNascimento(String dataNascimento) {
@@ -95,13 +95,13 @@ public class Cliente {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + this.idClinte;
-        hash = 97 * hash + Objects.hashCode(this.nome);
-        hash = 97 * hash + Objects.hashCode(this.telefone);
-        hash = 97 * hash + Objects.hashCode(this.email);
-        hash = 97 * hash + Objects.hashCode(this.cpf);
-        hash = 97 * hash + Objects.hashCode(this.dataNascimento);
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.codigo);
+        hash = 79 * hash + Objects.hashCode(this.nome);
+        hash = 79 * hash + Objects.hashCode(this.telefone);
+        hash = 79 * hash + Objects.hashCode(this.email);
+        hash = 79 * hash + Objects.hashCode(this.cpf);
+        hash = 79 * hash + Objects.hashCode(this.dataNascimento);
         return hash;
     }
 
@@ -117,9 +117,6 @@ public class Cliente {
             return false;
         }
         final Cliente other = (Cliente) obj;
-        if (this.idClinte != other.idClinte) {
-            return false;
-        }
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
@@ -135,17 +132,14 @@ public class Cliente {
         if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
             return false;
         }
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
         return true;
     }
 
     @Override
     public String toString() {
-        return "Cliente{" + "idClinte=" + idClinte + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + '}';
+        return "Cliente{" + "codigo=" + codigo + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + '}';
     }
-
-    
-    
-    
-    
-    
 }
