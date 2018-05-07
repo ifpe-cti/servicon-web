@@ -1,6 +1,7 @@
 /*MIT License
 
-Copyright (c) 2018 Fabricio Barros Cabral, Lucas Mendes Cavalcanti, Marcela Cardoso Melo, Sebastiao Izidorio de Oliveira Neto
+Copyright (c) 2018 Fabricio Barros Cabral, Lucas Mendes Cavalcanti, Marcela 
+Cardoso Melo, Sebastiao Izidorio de Oliveira Neto
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 package br.edu.ifpe.servicon.model.entidades;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -28,21 +30,14 @@ import java.util.Objects;
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
 public class Cliente {
-    
     private Integer codigo;
-    private String nome;
-    private String telefone;
-    private String email;
-    private String cpf;
-    private String dataNascimento;
+    private Pessoa pessoa;
+    private Endereco endereco;
 
-    public Cliente(Integer codigo, String nome, String telefone, String email, String cpf, String dataNascimento) {
+    public Cliente(Integer codigo, Pessoa pessoa, Endereco endereco) {
         this.codigo = codigo;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
+        this.pessoa = pessoa;
+        this.endereco = endereco;
     }
 
     public Integer getCodigo() {
@@ -53,55 +48,28 @@ public class Cliente {
         this.codigo = codigo;
     }
 
-    public String getNome() {
-        return nome;
+    public Pessoa getPessoa() {
+        return pessoa;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 79 * hash + Objects.hashCode(this.codigo);
-        hash = 79 * hash + Objects.hashCode(this.nome);
-        hash = 79 * hash + Objects.hashCode(this.telefone);
-        hash = 79 * hash + Objects.hashCode(this.email);
-        hash = 79 * hash + Objects.hashCode(this.cpf);
-        hash = 79 * hash + Objects.hashCode(this.dataNascimento);
+        int hash = 7;
+        hash = 89 * hash + Objects.hashCode(this.codigo);
+        hash = 89 * hash + Objects.hashCode(this.pessoa);
+        hash = 89 * hash + Objects.hashCode(this.endereco);
         return hash;
     }
 
@@ -117,22 +85,13 @@ public class Cliente {
             return false;
         }
         final Cliente other = (Cliente) obj;
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefone, other.telefone)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (!Objects.equals(this.cpf, other.cpf)) {
-            return false;
-        }
-        if (!Objects.equals(this.dataNascimento, other.dataNascimento)) {
-            return false;
-        }
         if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
+        if (!Objects.equals(this.pessoa, other.pessoa)) {
+            return false;
+        }
+        if (!Objects.equals(this.endereco, other.endereco)) {
             return false;
         }
         return true;
@@ -140,6 +99,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "codigo=" + codigo + ", nome=" + nome + ", telefone=" + telefone + ", email=" + email + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + '}';
+        return "Cliente{" + "codigo=" + codigo + ", pessoa=" + pessoa + 
+                ", endereco=" + endereco + '}';
     }
 }
