@@ -67,7 +67,8 @@ public class ProfissionalHibernate implements ProfissionalInterfaceDAO {
     public Profissional recuperar(int codigo) {
         session = utill.getSession();
         try {
-            return (Profissional) session.createQuery("FROM Profissional WHERE id_profissional = " + codigo).getResultList().get(0);
+            return (Profissional) session.createQuery
+            ("FROM Profissional WHERE id_profissional = " + codigo).getResultList().get(0);
         } catch (Exception recProfissionalException) {
             return null;
         } finally {
@@ -108,7 +109,8 @@ public class ProfissionalHibernate implements ProfissionalInterfaceDAO {
         session = utill.getSession();
         List<Profissional> profissionais = null;
         try {
-            profissionais = (List) session.createQuery("FROM Profissional").getResultList();
+            profissionais = (List) session.createQuery
+                ("FROM Profissional").getResultList();
         } catch (Exception recTodosProfissionalException) {
             return null;
         } finally {
