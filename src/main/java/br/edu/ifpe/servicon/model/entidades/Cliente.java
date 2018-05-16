@@ -32,36 +32,18 @@ import java.util.Objects;
 public class Cliente {
     private Integer codigo;
     private Pessoa pessoa;
-    private Endereco endereco;
 
-    public Cliente(Integer codigo, Pessoa pessoa, Endereco endereco) {
+    public Cliente(Integer codigo, Pessoa pessoa) {
         this.codigo = codigo;
         this.pessoa = pessoa;
-        this.endereco = endereco;
     }
 
     public Integer getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
-        this.codigo = codigo;
-    }
-
     public Pessoa getPessoa() {
         return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
     }
 
     @Override
@@ -69,7 +51,6 @@ public class Cliente {
         int hash = 7;
         hash = 89 * hash + Objects.hashCode(this.codigo);
         hash = 89 * hash + Objects.hashCode(this.pessoa);
-        hash = 89 * hash + Objects.hashCode(this.endereco);
         return hash;
     }
 
@@ -91,15 +72,12 @@ public class Cliente {
         if (!Objects.equals(this.pessoa, other.pessoa)) {
             return false;
         }
-        if (!Objects.equals(this.endereco, other.endereco)) {
-            return false;
-        }
         return true;
     }
 
     @Override
     public String toString() {
         return "Cliente{" + "codigo=" + codigo + ", pessoa=" + pessoa + 
-                ", endereco=" + endereco + '}';
+                ", endereco=" + '}';
     }
 }

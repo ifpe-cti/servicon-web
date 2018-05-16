@@ -23,21 +23,38 @@ SOFTWARE.*/
 package br.edu.ifpe.servicon.model.entidades;
 
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
+@Entity
 public class Endereco {
-    private int codigo;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_endereco")
+    private Integer codigo;
+    @Column
     private String estado;
+    @Column
     private String cidade;
+    @Column
     private String bairro;
+    @Column
     private String logradouro;
 
-    public Endereco(int codigo, String estado, String cidade, String bairro,
+    @Deprecated
+    public Endereco() {
+    }
+
+    public Endereco(String estado, String cidade, String bairro,
             String logradouro) {
-        this.codigo = codigo;
         this.estado = estado;
         this.cidade = cidade;
         this.bairro = bairro;
@@ -123,8 +140,8 @@ public class Endereco {
 
     @Override
     public String toString() {
-        return "Endereco{" + "codigo=" + codigo + ", estado=" + estado +
-                ", cidade=" + cidade + ", bairro=" + bairro + ", logradouro=" +
-                logradouro + '}';
-    } 
+        return "Endereco{" + "codigo=" + codigo + ", estado=" + estado
+                + ", cidade=" + cidade + ", bairro=" + bairro + ", logradouro="
+                + logradouro + '}';
+    }
 }
