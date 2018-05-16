@@ -29,7 +29,7 @@ import java.util.List;
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
 public interface DAO<T> {
-    void adicionar(T t);
+    void criar(T t);
     T recuperar(int codigo);
     void atualizar(T t);
     void deletar(T t);
