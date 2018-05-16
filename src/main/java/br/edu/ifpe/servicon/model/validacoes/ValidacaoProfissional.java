@@ -41,7 +41,7 @@ public class ValidacaoProfissional {
     public void cadastrar(Profissional profissional){
         if(((ProfissionalHibernate)DAO)
                 .recuperar(profissional.getCodigo()) == null){
-            this.DAO.adicionar(profissional);
+            this.DAO.criar(profissional);
         }
     }
     

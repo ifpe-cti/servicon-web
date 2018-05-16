@@ -20,34 +20,53 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.*/
-package br.edu.ifpe.servicon.model.utill;
+package br.edu.ifpe.servicon.model.validacoes;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
+import br.edu.ifpe.servicon.model.entidades.Pessoa;
+import br.edu.ifpe.servicon.model.implementacoes.mysql.PessoaHibernate;
+import br.edu.ifpe.servicon.model.interfaces.DAO;
+import java.util.List;
 
 /**
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
-public class HibernateUtill {
+public class ValidacaoPessoa {
+    private final DAO<Pessoa> DAO;
 
-    private static HibernateUtill instance;
-    private static SessionFactory sessions;
+    public ValidacaoPessoa() {
+      this.DAO = PessoaHibernate.getInstance();
+    }
 
-    public static HibernateUtill getInstance() {
-        if (instance == null) {
-            instance = new HibernateUtill();
+    public void criar(Pessoa pessoa) {
+        if(((PessoaHibernate)DAO).
+                recuperar(pessoa.getCodigo()) == null){
+            this.DAO.criar(pessoa);
         }
-        return instance;
     }
 
-    private HibernateUtill() {
-        Configuration cfg = new Configuration().configure();
-        sessions = cfg.buildSessionFactory();
+    public Pessoa recuperar(Integer codigo) {
+        if(codigo == null){
+            return null;
+        }
+        return ((PessoaHibernate)DAO).recuperar(codigo);
     }
 
-    public Session getSession() {
-        return sessions.openSession();
+    public void atualizar(Pessoa pessoa) {
+        if(((PessoaHibernate)DAO).
+                recuperar(pessoa.getCodigo()) != null){
+            this.DAO.atualizar(pessoa);
+        }
+    }
+
+    public void deletar(Pessoa pessoa) {
+          if(((PessoaHibernate)DAO).
+                recuperar(pessoa.getCodigo()) != null){
+            this.DAO.deletar(pessoa);
+        }
+    }
+
+    public List<Pessoa> recuperarTodos() {
+        return ((PessoaHibernate)DAO).recuperarTodos();
     }
 }

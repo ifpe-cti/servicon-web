@@ -22,8 +22,8 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.*/
 package br.edu.ifpe.servicon.model.implementacoes.mysql;
 
-import br.edu.ifpe.servicon.model.entidades.Profissional;
-import br.edu.ifpe.servicon.model.interfaces.ProfissionalInterfaceDAO;
+import br.edu.ifpe.servicon.model.entidades.Pessoa;
+import br.edu.ifpe.servicon.model.interfaces.PessoaInterfaceDAO;
 import br.edu.ifpe.servicon.model.utill.HibernateUtill;
 import java.util.List;
 import org.hibernate.Session;
@@ -33,30 +33,30 @@ import org.hibernate.Transaction;
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
-public class ProfissionalHibernate implements ProfissionalInterfaceDAO {
-    private static ProfissionalHibernate instance = null;
+public class PessoaHibernate implements PessoaInterfaceDAO{
+    private static PessoaHibernate instance = null;
     private final HibernateUtill utill;
     private Session session;
     
-    public static ProfissionalHibernate getInstance(){
+    public static PessoaHibernate getInstance(){
         if(instance == null){
-            instance = new ProfissionalHibernate();
+            instance = new PessoaHibernate();
         }
         return instance;
     }
 
-    public ProfissionalHibernate() {
+    public PessoaHibernate() {
         this.utill = HibernateUtill.getInstance();
-    }
+    }  
 
     @Override
-    public void criar(Profissional profissional) {
-        session = utill.getSession();
+    public void criar(Pessoa pessoa) {
+        Session session = utill.getSession();
         Transaction t = session.beginTransaction();
         try{
-            session.persist(profissional);
+            session.persist(pessoa);
             t.commit();
-        }catch(Exception addProfissionalException){
+        }catch(Exception addPessoaException){
             t.rollback();
         }finally{
             session.close();
@@ -64,23 +64,23 @@ public class ProfissionalHibernate implements ProfissionalInterfaceDAO {
     }
 
     @Override
-    public Profissional recuperar(int codigo) {
+    public Pessoa recuperar(int codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void atualizar(Profissional t) {
+    public void atualizar(Pessoa pessoa) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void deletar(Profissional t) {
+    public void deletar(Pessoa pessoa) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Profissional> recuperarTodos() {
+    public List<Pessoa> recuperarTodos() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }
