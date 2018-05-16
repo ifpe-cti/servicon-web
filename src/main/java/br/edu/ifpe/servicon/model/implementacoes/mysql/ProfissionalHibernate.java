@@ -65,22 +65,56 @@ public class ProfissionalHibernate implements ProfissionalInterfaceDAO {
 
     @Override
     public Profissional recuperar(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session = utill.getSession();
+        try {
+            return (Profissional) session.createQuery("FROM Profissional WHERE id_profissional = " + codigo).getResultList().get(0);
+        } catch (Exception recProfissionalException) {
+            return null;
+        } finally {
+            session.close();
+        }
     }
 
     @Override
-    public void atualizar(Profissional t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void atualizar(Profissional profissional) {
+        session = utill.getSession();
+        Transaction t = session.beginTransaction();
+        try {
+            session.update(profissional);
+            t.commit();
+        } catch (Exception updateProfissionalException) {
+            t.rollback();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
-    public void deletar(Profissional t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deletar(Profissional profissional) {
+        session = utill.getSession();
+        Transaction t = session.beginTransaction();
+        try {
+            session.delete(profissional);
+            t.commit();
+        } catch (Exception delProfissionalException) {
+            t.rollback();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
     public List<Profissional> recuperarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session = utill.getSession();
+        List<Profissional> profissionais = null;
+        try {
+            profissionais = (List) session.createQuery("FROM Profissional").getResultList();
+        } catch (Exception recTodosProfissionalException) {
+            return null;
+        } finally {
+            session.close();
+            return profissionais;
+        }
     }
 
 }
