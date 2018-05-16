@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 package br.edu.ifpe.servicon.model.entidades;
 
+import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +35,7 @@ import javax.persistence.Id;
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
 @Entity
-public class Endereco {
+public class Endereco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -120,7 +121,7 @@ public class Endereco {
             return false;
         }
         final Endereco other = (Endereco) obj;
-        if (this.codigo != other.codigo) {
+        if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
         if (!Objects.equals(this.estado, other.estado)) {

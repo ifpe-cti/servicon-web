@@ -24,23 +24,38 @@ package br.edu.ifpe.servicon.model.entidades;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
+@Entity
 public class Pagamento {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pagamento")
     private Integer codigo;
+    @Column(length = 14,nullable = false,updatable = false)
     private String tipo;
+    @Column(nullable = false)
     private boolean status;
+    @Column(precision = 10,scale = 2)
     private BigDecimal valor;
+    @OneToOne
+    private Servico servicoPagamento;
 
-    public Pagamento(Integer codigo, String tipo, boolean status, 
-            BigDecimal valor) {
-        this.codigo = codigo;
+    public Pagamento(String tipo, boolean status,
+            BigDecimal valor, Servico servicoPagamento) {
         this.tipo = tipo;
         this.status = status;
         this.valor = valor;
+        this.servicoPagamento = servicoPagamento;
     }
 
     public Integer getCodigo() {
@@ -63,14 +78,19 @@ public class Pagamento {
         return valor;
     }
 
+    public Servico getServicoPagamento() {
+        return servicoPagamento;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.codigo);
-        hash = 29 * hash + Objects.hashCode(this.tipo);
-        hash = 29 * hash + (this.status ? 1 : 0);
-        hash = 29 * hash + Objects.hashCode(this.valor);
-        return hash;
+        final int PRIME = 31;
+        int result = 1;
+        result = PRIME * result + ((codigo == null) ? 0 : codigo.hashCode());
+        result = PRIME * result + ((tipo == null) ? 0 : tipo.hashCode());
+        result = PRIME * result + ((valor == null) ? 0 : valor.hashCode());
+        result = PRIME * result + ((servicoPagamento == null) ? 0 : servicoPagamento.hashCode());
+        return result;
     }
 
     @Override
@@ -97,12 +117,13 @@ public class Pagamento {
         if (!Objects.equals(this.valor, other.valor)) {
             return false;
         }
-        return true;
+        return Objects.equals(this.servicoPagamento, other.servicoPagamento);
     }
 
     @Override
     public String toString() {
         return "Pagamento{" + "codigo=" + codigo + ", tipo=" + 
-                tipo + ", status=" + status + ", valor=" + valor + '}';
-    }   
+                tipo + ", status=" + status + ", valor=" + valor +
+                ", servicoPagamento=" + servicoPagamento + '}';
+    }
 }
