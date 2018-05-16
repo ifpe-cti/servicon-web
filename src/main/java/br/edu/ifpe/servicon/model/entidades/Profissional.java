@@ -99,10 +99,7 @@ public class Profissional {
         if (!Objects.equals(this.pessoa, other.pessoa)) {
             return false;
         }
-        if (!Objects.equals(this.avaliacao, other.avaliacao)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.avaliacao, other.avaliacao);
     }
 
     @Override

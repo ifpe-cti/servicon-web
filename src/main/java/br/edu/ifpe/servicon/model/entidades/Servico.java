@@ -77,13 +77,14 @@ public class Servico {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.codigo);
-        hash = 89 * hash + Objects.hashCode(this.cliente);
-        hash = 89 * hash + Objects.hashCode(this.Profissionais);
-        hash = 89 * hash + Objects.hashCode(this.dataHora);
-        hash = 89 * hash + Objects.hashCode(this.pagamento);
-        return hash;
+        final int HASH = 7;
+        int result = 1;
+        result = HASH * result + ((codigo == null) ? 0 : codigo.hashCode());
+        result = HASH * result + ((cliente == null) ? 0 : cliente.hashCode());
+        result = HASH * result + ((Profissionais == null) ? 0 : Profissionais.hashCode());
+        result = HASH * result + ((dataHora == null) ? 0 : dataHora.hashCode());
+        result = HASH * result + ((pagamento == null) ? 0 : pagamento.hashCode());
+        return result;
     }
 
     @Override

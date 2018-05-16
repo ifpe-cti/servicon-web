@@ -138,10 +138,7 @@ public class Pessoa implements Serializable {
         if (!Objects.equals(this.codigo, other.codigo)) {
             return false;
         }
-        if (!Objects.equals(this.nascimento, other.nascimento)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.nascimento, other.nascimento);
     }
 
     @Override
