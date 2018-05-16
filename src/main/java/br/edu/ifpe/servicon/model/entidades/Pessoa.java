@@ -22,22 +22,43 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.*/
 package br.edu.ifpe.servicon.model.entidades;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
-public class Pessoa {
+@Entity
+public class Pessoa implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pessoa")
+    private Integer codigo;
+    @Column(length = 35, nullable = false)
     private String nome;
+    @Column(unique = true, length = 11, nullable = false)
     private String telefone;
+    @Column(unique = true, length = 40, nullable = false)
     private String email;
+    @Column(unique = true, length = 11, nullable = false)
     private String cpf;
+    @Column(nullable = false)
     private LocalDate nascimento;
 
-    public Pessoa(String nome, String telefone, String email, String cpf, 
-            LocalDate nascimento) {
+    public Pessoa(String nome, String telefone, String email, String cpf,
+            LocalDate nascimento, Endereco endereco) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -45,8 +66,16 @@ public class Pessoa {
         this.nascimento = nascimento;
     }
 
+    public Integer getCodigo() {
+        return codigo;
+    }
+
     public String getNome() {
         return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getTelefone() {
@@ -61,10 +90,6 @@ public class Pessoa {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getCpf() {
         return cpf;
     }
@@ -73,14 +98,16 @@ public class Pessoa {
         return nascimento;
     }
 
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.nome);
-        hash = 29 * hash + Objects.hashCode(this.telefone);
-        hash = 29 * hash + Objects.hashCode(this.email);
-        hash = 29 * hash + Objects.hashCode(this.cpf);
-        hash = 29 * hash + Objects.hashCode(this.nascimento);
+        int hash = 5;
+        hash = 31 * hash + Objects.hashCode(this.codigo);
+        hash = 31 * hash + Objects.hashCode(this.nome);
+        hash = 31 * hash + Objects.hashCode(this.telefone);
+        hash = 31 * hash + Objects.hashCode(this.email);
+        hash = 31 * hash + Objects.hashCode(this.cpf);
+        hash = 31 * hash + Objects.hashCode(this.nascimento);
         return hash;
     }
 
@@ -108,6 +135,9 @@ public class Pessoa {
         if (!Objects.equals(this.cpf, other.cpf)) {
             return false;
         }
+        if (!Objects.equals(this.codigo, other.codigo)) {
+            return false;
+        }
         if (!Objects.equals(this.nascimento, other.nascimento)) {
             return false;
         }
@@ -116,8 +146,9 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa{" + "nome=" + nome + ", telefone=" + telefone + ", "
-                + "email=" + email + ", cpf=" + cpf + ", nascimento=" +
-                nascimento + '}';
-    }   
+        return "Pessoa{" + "codigo=" + codigo + ", nome=" + nome
+                + ", telefone=" + telefone + ", email=" + email + ", cpf="
+                + cpf + ", nascimento=" + nascimento
+                + ", endereco=";
+    }
 }

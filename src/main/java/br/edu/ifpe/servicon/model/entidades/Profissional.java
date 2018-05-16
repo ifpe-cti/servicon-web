@@ -23,24 +23,37 @@ package br.edu.ifpe.servicon.model.entidades;
 
 import java.math.BigDecimal;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
+@Entity
 public class Profissional {
-    
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_profissional")
     private Integer codigo;
+    @OneToOne
     private Pessoa pessoa;
-    private Endereco endereco;
+    @Column(nullable = false, precision = 10,scale = 2)
     private BigDecimal avaliacao;
 
-    public Profissional(Integer codigo, Pessoa pessoa, Endereco endereco, 
+    @Deprecated
+    public Profissional() {
+    }
+
+    public Profissional(Pessoa pessoa,
             BigDecimal avaliacao) {
-        this.codigo = codigo;
         this.pessoa = pessoa;
-        this.endereco = endereco;
-        this.avaliacao = avaliacao; 
+        this.avaliacao = avaliacao;
     }
 
     public Integer getCodigo() {
@@ -49,14 +62,6 @@ public class Profissional {
 
     public Pessoa getPessoa() {
         return pessoa;
-    }
-
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
     }
 
     public BigDecimal getAvaliacao() {
@@ -72,7 +77,6 @@ public class Profissional {
         int hash = 7;
         hash = 97 * hash + Objects.hashCode(this.codigo);
         hash = 97 * hash + Objects.hashCode(this.pessoa);
-        hash = 97 * hash + Objects.hashCode(this.endereco);
         hash = 97 * hash + Objects.hashCode(this.avaliacao);
         return hash;
     }
@@ -95,9 +99,6 @@ public class Profissional {
         if (!Objects.equals(this.pessoa, other.pessoa)) {
             return false;
         }
-        if (!Objects.equals(this.endereco, other.endereco)) {
-            return false;
-        }
         if (!Objects.equals(this.avaliacao, other.avaliacao)) {
             return false;
         }
@@ -107,7 +108,6 @@ public class Profissional {
     @Override
     public String toString() {
         return "Profissional{" + "codigo=" + codigo + ", pessoa=" + 
-                pessoa + ", endereco=" + endereco + ", avaliacao=" 
-                + avaliacao + '}';
-    }  
+                pessoa + ", avaliacao=" + avaliacao + '}';
+    }
 }
