@@ -20,7 +20,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.*/
-package br.edu.ifpe.servicon.model.implementacoes.mysql;
+package br.edu.ifpe.servicon.model.implementacoes.hibernate;
 
 import br.edu.ifpe.servicon.model.entidades.Pessoa;
 import br.edu.ifpe.servicon.model.interfaces.PessoaInterfaceDAO;
@@ -51,10 +51,10 @@ public class PessoaHibernate implements PessoaInterfaceDAO{
 
     @Override
     public void criar(Pessoa pessoa) {
-        Session session = utill.getSession();
+        session = utill.getSession();
         Transaction t = session.beginTransaction();
         try{
-            session.persist(pessoa);
+            session.saveOrUpdate(pessoa);
             t.commit();
         }catch(Exception addPessoaException){
             t.rollback();
