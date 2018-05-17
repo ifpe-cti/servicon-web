@@ -56,14 +56,21 @@ public class Pessoa implements Serializable {
     private String cpf;
     @Column(nullable = false)
     private LocalDate nascimento;
+    @Column
+    private Endereco endereco;
+    
+    @Deprecated
+    public Pessoa() {
+    }
 
-    public Pessoa(String nome, String telefone, String email, String cpf,
-            LocalDate nascimento, Endereco endereco) {
+    public Pessoa(String nome, String telefone, String email,
+            String cpf, LocalDate nascimento, Endereco endereco) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.cpf = cpf;
         this.nascimento = nascimento;
+        this.endereco = endereco;
     }
 
     public Integer getCodigo() {
@@ -72,10 +79,6 @@ public class Pessoa implements Serializable {
 
     public String getNome() {
         return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getTelefone() {
@@ -90,6 +93,10 @@ public class Pessoa implements Serializable {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getCpf() {
         return cpf;
     }
@@ -98,54 +105,36 @@ public class Pessoa implements Serializable {
         return nascimento;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 31 * hash + Objects.hashCode(this.codigo);
-        hash = 31 * hash + Objects.hashCode(this.nome);
-        hash = 31 * hash + Objects.hashCode(this.telefone);
-        hash = 31 * hash + Objects.hashCode(this.email);
-        hash = 31 * hash + Objects.hashCode(this.cpf);
-        hash = 31 * hash + Objects.hashCode(this.nascimento);
-        return hash;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Pessoa other = (Pessoa) obj;
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        if (!Objects.equals(this.telefone, other.telefone)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (!Objects.equals(this.cpf, other.cpf)) {
-            return false;
-        }
-        if (!Objects.equals(this.codigo, other.codigo)) {
-            return false;
-        }
-        return Objects.equals(this.nascimento, other.nascimento);
+    public int hashCode() {
+        final int HASH = 11;
+        int result = 1;
+        result = (HASH * result) + codigo.hashCode();
+        result = (HASH * result) + nome.hashCode();
+        result = (HASH * result) + cpf.hashCode();
+        result = (HASH * result) + email.hashCode();
+        result = (HASH * result) + nascimento.hashCode();
+        result = (HASH * result) + endereco.hashCode();
+        result = HASH * result + ((nome == null) ? 0 : nome.hashCode());
+        result = HASH * result + 
+                ((telefone == null) ? 0 : telefone.hashCode());
+        result = HASH * result + ((nome == null) ? 0 : nome.hashCode());
+        return result;
     }
 
     @Override
     public String toString() {
-        return "Pessoa{" + "codigo=" + codigo + ", nome=" + nome
-                + ", telefone=" + telefone + ", email=" + email + ", cpf="
-                + cpf + ", nascimento=" + nascimento
-                + ", endereco=";
-    }
+        return "Pessoa{" + "codigo=" + codigo + ", nome=" +
+                nome + ", telefone=" + telefone + ", email=" +
+                email + ", cpf=" + cpf + ", nascimento=" + nascimento +
+                ", endereco=" + endereco + '}';
+    }   
 }

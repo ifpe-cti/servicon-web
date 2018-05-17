@@ -22,29 +22,40 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.*/
 package br.edu.ifpe.servicon.model.entidades;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
+@Entity
 public class Servico {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_servico")
     private Integer codigo;
     private Cliente cliente;
-    private List<Profissional> Profissionais;
+    private List<Profissional> profissionais;
     private Timestamp dataHora;
-    private Pagamento pagamento;
 
-    public Servico(Integer codigo, Cliente cliente, List<Profissional> 
-            Profissionais, Timestamp dataHora, Pagamento pagamento) {
-        this.codigo = codigo;
+    @Deprecated
+    public Servico() {
+    }
+
+    public Servico(Cliente cliente, List<Profissional> profissionais,
+            Timestamp dataHora) {
         this.cliente = cliente;
-        this.Profissionais = Profissionais;
+        this.profissionais = profissionais;
         this.dataHora = dataHora;
-        this.pagamento = pagamento;
     }
 
     public Integer getCodigo() {
@@ -56,34 +67,29 @@ public class Servico {
     }
 
     public List<Profissional> getProfissionais() {
-        return Profissionais;
+        return profissionais;
     }
 
     public void setProfissionais(List<Profissional> Profissionais) {
-        this.Profissionais = Profissionais;
+        this.profissionais = Profissionais;
     }
 
     public Timestamp getDataHora() {
         return dataHora;
     }
 
-    public Pagamento getPagamento() {
-        return pagamento;
-    }
-
-    public void setPagamento(Pagamento pagamento) {
-        this.pagamento = pagamento;
+    public void setDataHora(Timestamp dataHora) {
+        this.dataHora = dataHora;
     }
 
     @Override
     public int hashCode() {
-        final int HASH = 7;
+        final int HASH = 23;
         int result = 1;
-        result = HASH * result + ((codigo == null) ? 0 : codigo.hashCode());
-        result = HASH * result + ((cliente == null) ? 0 : cliente.hashCode());
-        result = HASH * result + ((Profissionais == null) ? 0 : Profissionais.hashCode());
-        result = HASH * result + ((dataHora == null) ? 0 : dataHora.hashCode());
-        result = HASH * result + ((pagamento == null) ? 0 : pagamento.hashCode());
+        result = (HASH * result) + codigo.hashCode();
+        result = (HASH * result) + cliente.hashCode();
+        result = (HASH * result) + profissionais.hashCode();
+        result = (HASH * result) + dataHora.hashCode();
         return result;
     }
 
@@ -105,22 +111,16 @@ public class Servico {
         if (!Objects.equals(this.cliente, other.cliente)) {
             return false;
         }
-        if (!Objects.equals(this.Profissionais, other.Profissionais)) {
+        if (!Objects.equals(this.profissionais, other.profissionais)) {
             return false;
         }
-        if (!Objects.equals(this.dataHora, other.dataHora)) {
-            return false;
-        }
-        if (!Objects.equals(this.pagamento, other.pagamento)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.dataHora, other.dataHora);
     }
 
     @Override
     public String toString() {
-        return "Servico{" + "codigo=" + codigo + ", cliente=" + cliente + 
-                ", Profissionais=" + Profissionais + ", dataHora=" + dataHora +
-                ", pagamento=" + pagamento + '}';
+        return "Servico{" + "codigo=" + codigo
+                + ", cliente=" + cliente + ", profissionais=" + profissionais
+                + ", dataHora=" + dataHora + '}';
     }
 }

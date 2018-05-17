@@ -42,6 +42,8 @@ public class Endereco implements Serializable {
     @Column(name = "id_endereco")
     private Integer codigo;
     @Column
+    private String cep;
+    @Column
     private String estado;
     @Column
     private String cidade;
@@ -50,44 +52,24 @@ public class Endereco implements Serializable {
     @Column
     private String logradouro;
 
-    @Deprecated
-    public Endereco() {
-    }
-
-    public Endereco(String estado, String cidade, String bairro,
-            String logradouro) {
-        this.estado = estado;
-        this.cidade = cidade;
-        this.bairro = bairro;
-        this.logradouro = logradouro;
-    }
-
-    public int getCodigo() {
+    public Integer getCodigo() {
         return codigo;
+    }
+
+    public String getCEP() {
+        return cep;
     }
 
     public String getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public String getCidade() {
         return cidade;
     }
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
-
     public String getBairro() {
         return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
     }
 
     public String getLogradouro() {
@@ -98,15 +80,21 @@ public class Endereco implements Serializable {
         this.logradouro = logradouro;
     }
 
+    @Deprecated
+    public Endereco() {
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 79 * hash + this.codigo;
-        hash = 79 * hash + Objects.hashCode(this.estado);
-        hash = 79 * hash + Objects.hashCode(this.cidade);
-        hash = 79 * hash + Objects.hashCode(this.bairro);
-        hash = 79 * hash + Objects.hashCode(this.logradouro);
-        return hash;
+        final int HASH = 5;
+        int result = 1;
+        result = (HASH * result) + codigo.hashCode();
+        result = (HASH * result) + estado.hashCode();
+        result = (HASH * result) + cidade.hashCode();
+        result = (HASH * result) + bairro.hashCode();
+        result = (HASH * result) + logradouro.hashCode();
+        result = HASH * result + ((cep == null) ? 0 : cep.hashCode());
+        return result;
     }
 
     @Override
@@ -121,7 +109,7 @@ public class Endereco implements Serializable {
             return false;
         }
         final Endereco other = (Endereco) obj;
-        if (!Objects.equals(this.codigo, other.codigo)) {
+        if (!Objects.equals(this.cep, other.cep)) {
             return false;
         }
         if (!Objects.equals(this.estado, other.estado)) {
@@ -136,13 +124,14 @@ public class Endereco implements Serializable {
         if (!Objects.equals(this.logradouro, other.logradouro)) {
             return false;
         }
-        return true;
+        return Objects.equals(this.codigo, other.codigo);
     }
 
     @Override
     public String toString() {
-        return "Endereco{" + "codigo=" + codigo + ", estado=" + estado
-                + ", cidade=" + cidade + ", bairro=" + bairro + ", logradouro="
+        return "Endereco{" + "codigo=" + codigo + ", cep="
+                + cep + ", estado=" + estado + ", cidade="
+                + cidade + ", bairro=" + bairro + ", logradouro="
                 + logradouro + '}';
     }
 }
