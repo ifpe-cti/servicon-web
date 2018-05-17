@@ -30,6 +30,7 @@ import java.util.Objects;
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
 public class Cliente {
+
     private Integer codigo;
     private Pessoa pessoa;
 
@@ -48,10 +49,11 @@ public class Cliente {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 89 * hash + Objects.hashCode(this.codigo);
-        hash = 89 * hash + Objects.hashCode(this.pessoa);
-        return hash;
+        final int PRIME = 21;
+        int result = 1;
+        result = (PRIME * result) + codigo.hashCode();
+        result = PRIME * result + ((pessoa == null) ? 0 : pessoa.hashCode());
+        return result;
     }
 
     @Override
@@ -77,7 +79,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "codigo=" + codigo + ", pessoa=" + pessoa + 
-                ", endereco=" + '}';
+        return "Cliente{" + "codigo=" + codigo + ", pessoa=" + pessoa
+                + ", endereco=" + '}';
     }
 }

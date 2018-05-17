@@ -86,10 +86,10 @@ public class Pagamento {
     public int hashCode() {
         final int PRIME = 31;
         int result = 1;
-        result = PRIME * result + ((codigo == null) ? 0 : codigo.hashCode());
-        result = PRIME * result + ((tipo == null) ? 0 : tipo.hashCode());
-        result = PRIME * result + ((valor == null) ? 0 : valor.hashCode());
-        result = PRIME * result + ((servicoPagamento == null) ? 0 : servicoPagamento.hashCode());
+        result = (PRIME * result) + codigo.hashCode();
+        result = (PRIME * result) +  tipo.hashCode();
+        result = (PRIME * result) + valor.hashCode();
+        result = (PRIME * result) + servicoPagamento.hashCode();
         return result;
     }
 

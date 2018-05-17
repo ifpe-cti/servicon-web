@@ -74,11 +74,12 @@ public class Profissional {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 97 * hash + Objects.hashCode(this.codigo);
-        hash = 97 * hash + Objects.hashCode(this.pessoa);
-        hash = 97 * hash + Objects.hashCode(this.avaliacao);
-        return hash;
+        final int HASH = 17;
+        int result = 1;
+        result = (HASH * result) + codigo.hashCode();
+        result = (HASH * result) + pessoa.hashCode();
+        result = (HASH * result) + avaliacao.hashCode();
+        return result;
     }
 
     @Override
