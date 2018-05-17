@@ -23,7 +23,7 @@ IN THE SOFTWARE.*/
 package br.edu.ifpe.servicon.model.validacoes;
 
 import br.edu.ifpe.servicon.model.entidades.Profissional;
-import br.edu.ifpe.servicon.model.implementacoes.mysql.ProfissionalHibernate;
+import br.edu.ifpe.servicon.model.implementacoes.hibernate.ProfissionalHibernate;
 import br.edu.ifpe.servicon.model.interfaces.DAO;
 import java.util.List;
 
@@ -38,11 +38,9 @@ public class ValidacaoProfissional {
         this.DAO = ProfissionalHibernate.getInstance();
     }
     
-    public void cadastrar(Profissional profissional){
-        if(((ProfissionalHibernate)DAO)
-                .recuperar(profissional.getCodigo()) == null){
+    public void criar(Profissional profissional){
+        if(profissional.getCodigo() == null)
             this.DAO.criar(profissional);
-        }
     }
     
     public Profissional recuperar(Integer codigo){

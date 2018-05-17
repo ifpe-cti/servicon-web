@@ -24,22 +24,22 @@ package br.edu.ifpe.servicon.model.entidades;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
 @Entity
+@Table
 public class Pessoa implements Serializable {
 
     @Id
@@ -56,9 +56,10 @@ public class Pessoa implements Serializable {
     private String cpf;
     @Column(nullable = false)
     private LocalDate nascimento;
-    @Column
+    @OneToOne
+    @JoinColumn(name = "cod_endereco")
     private Endereco endereco;
-    
+
     @Deprecated
     public Pessoa() {
     }
@@ -124,17 +125,17 @@ public class Pessoa implements Serializable {
         result = (HASH * result) + nascimento.hashCode();
         result = (HASH * result) + endereco.hashCode();
         result = HASH * result + ((nome == null) ? 0 : nome.hashCode());
-        result = HASH * result + 
-                ((telefone == null) ? 0 : telefone.hashCode());
+        result = HASH * result
+                + ((telefone == null) ? 0 : telefone.hashCode());
         result = HASH * result + ((nome == null) ? 0 : nome.hashCode());
         return result;
     }
 
     @Override
     public String toString() {
-        return "Pessoa{" + "codigo=" + codigo + ", nome=" +
-                nome + ", telefone=" + telefone + ", email=" +
-                email + ", cpf=" + cpf + ", nascimento=" + nascimento +
-                ", endereco=" + endereco + '}';
-    }   
+        return "Pessoa{" + "codigo=" + codigo + ", nome="
+                + nome + ", telefone=" + telefone + ", email="
+                + email + ", cpf=" + cpf + ", nascimento=" + nascimento
+                + ", endereco=" + endereco + '}';
+    }
 }

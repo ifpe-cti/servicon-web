@@ -23,7 +23,7 @@ IN THE SOFTWARE.*/
 package br.edu.ifpe.servicon.model.validacoes;
 
 import br.edu.ifpe.servicon.model.entidades.Pessoa;
-import br.edu.ifpe.servicon.model.implementacoes.mysql.PessoaHibernate;
+import br.edu.ifpe.servicon.model.implementacoes.hibernate.PessoaHibernate;
 import br.edu.ifpe.servicon.model.interfaces.DAO;
 import java.util.List;
 
@@ -39,10 +39,8 @@ public class ValidacaoPessoa {
     }
 
     public void criar(Pessoa pessoa) {
-        if(((PessoaHibernate)DAO).
-                recuperar(pessoa.getCodigo()) == null){
+        if(pessoa.getCodigo() == null)
             this.DAO.criar(pessoa);
-        }
     }
 
     public Pessoa recuperar(Integer codigo) {

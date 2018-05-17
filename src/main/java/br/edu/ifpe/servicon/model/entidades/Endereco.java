@@ -29,28 +29,43 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
 @Entity
+@Table
 public class Endereco implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_endereco")
     private Integer codigo;
-    @Column
+    @Column(length = 8, updatable = false)
     private String cep;
-    @Column
+    @Column(length = 20)
     private String estado;
-    @Column
+    @Column(length = 25)
     private String cidade;
-    @Column
+    @Column(length = 20)
     private String bairro;
-    @Column
+    @Column(length = 30)
     private String logradouro;
+
+    @Deprecated
+    public Endereco() {
+    }
+
+    public Endereco(String cep, String estado,
+            String cidade, String bairro, String logradouro) {
+        this.cep = cep;
+        this.estado = estado;
+        this.cidade = cidade;
+        this.bairro = bairro;
+        this.logradouro = logradouro;
+    }
 
     public Integer getCodigo() {
         return codigo;
@@ -78,10 +93,6 @@ public class Endereco implements Serializable {
 
     public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
-    }
-
-    @Deprecated
-    public Endereco() {
     }
 
     @Override
