@@ -56,7 +56,7 @@ public class Pessoa implements Serializable {
     private String cpf;
     @Column(nullable = false)
     private LocalDate nascimento;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "cod_endereco")
     private Endereco endereco;
 
