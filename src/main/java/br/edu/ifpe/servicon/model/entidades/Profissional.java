@@ -48,7 +48,7 @@ public class Profissional implements Serializable {
     @Column(name = "id_profissional")
     private Integer codigo;
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cod_pessoa")
+    @JoinColumn(name = "cod_pessoa",unique = true)
     private Pessoa pessoa;
     @Column(nullable = false, precision = 10,scale = 2)
     private BigDecimal avaliacao;
