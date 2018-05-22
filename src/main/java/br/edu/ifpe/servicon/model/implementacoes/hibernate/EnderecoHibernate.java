@@ -35,18 +35,17 @@ import org.hibernate.Transaction;
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
 public class EnderecoHibernate implements EnderecoInterfaceDAO {
-
-    private final HibernateUtill utill;
+    private final HibernateUtill UTILL;
     private static EnderecoHibernate instance;
     private Session session;
 
     public EnderecoHibernate() {
-        utill = HibernateUtill.getInstance();
+        UTILL = HibernateUtill.getInstance();
     }
 
     @Override
     public void criar(Endereco endereco) {
-        session = utill.getSession();
+        session = UTILL.getSession();
         Transaction transaction = session.beginTransaction();
         try {
             session.save(endereco);
@@ -62,7 +61,7 @@ public class EnderecoHibernate implements EnderecoInterfaceDAO {
     @Override
     public Endereco recuperar(Integer codigo) {
         try {
-            session = utill.getSession();
+            session = UTILL.getSession();
             return (Endereco) session.createQuery
             ("FROM Endereco where id_endereco=" + codigo).getResultList();
         } catch (Exception readEnderecoException) {
@@ -75,7 +74,7 @@ public class EnderecoHibernate implements EnderecoInterfaceDAO {
 
     @Override
     public void atualizar(Endereco endereco) {
-        session = utill.getSession();
+        session = UTILL.getSession();
         Transaction transaction = session.beginTransaction();
         try {
             session.update(endereco);
@@ -90,7 +89,7 @@ public class EnderecoHibernate implements EnderecoInterfaceDAO {
 
     @Override
     public void deletar(Endereco endereco) {
-        session = utill.getSession();
+        session = UTILL.getSession();
         Transaction transaction = session.beginTransaction();
         try {
             session.delete(endereco);
@@ -105,7 +104,7 @@ public class EnderecoHibernate implements EnderecoInterfaceDAO {
 
     @Override
     public List<Endereco> recuperarTodos() {
-        session = utill.getSession();
+        session = UTILL.getSession();
         List<Endereco> enderecos = new ArrayList();
         try{
             enderecos = (List) session.createQuery
