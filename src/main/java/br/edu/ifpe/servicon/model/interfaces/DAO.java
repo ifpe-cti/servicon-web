@@ -30,7 +30,7 @@ import java.util.List;
  */
 public interface DAO<T> {
     void criar(T t);
-    T recuperar(int codigo);
+    T recuperar(Integer codigo);
     void atualizar(T t);
     void deletar(T t);
     List<T> recuperarTodos();

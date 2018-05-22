@@ -23,8 +23,10 @@ public class ValidacaoEndereco {
     }
 
     public void criar(Endereco endereco) {
-        if(endereco.getCodigo() == null)
+        if (((EnderecoHibernate) DAO)
+                .recuperar(endereco.getCodigo()) == null) {
             this.DAO.criar(endereco);
+        }
     }
 
     public Endereco recuperar(Integer codigo) {
