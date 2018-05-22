@@ -37,7 +37,7 @@ import org.hibernate.Transaction;
 public class PessoaHibernate implements PessoaInterfaceDAO {
 
     private static PessoaHibernate instance = null;
-    private final HibernateUtill utill;
+    private final HibernateUtill UTILL;
     private Session session;
 
     public static PessoaHibernate getInstance() {
@@ -48,12 +48,12 @@ public class PessoaHibernate implements PessoaInterfaceDAO {
     }
 
     public PessoaHibernate() {
-        this.utill = HibernateUtill.getInstance();
+        this.UTILL = HibernateUtill.getInstance();
     }
 
     @Override
     public void criar(Pessoa pessoa) {
-        session = utill.getSession();
+        session = UTILL.getSession();
         Transaction t = session.beginTransaction();
         try {
             session.save(pessoa);
@@ -69,7 +69,7 @@ public class PessoaHibernate implements PessoaInterfaceDAO {
     @Override
     public Pessoa recuperar(Integer codigo) {
         try {
-            session = utill.getSession();
+            session = UTILL.getSession();
             return (Pessoa) session.createQuery
                 ("FROM Pessoa where id_pessoa=" + codigo).getResultList();
         } catch (Exception readPessoaException) {
@@ -82,7 +82,7 @@ public class PessoaHibernate implements PessoaInterfaceDAO {
 
     @Override
     public void atualizar(Pessoa pessoa) {
-        session = utill.getSession();
+        session = UTILL.getSession();
         Transaction t = session.beginTransaction();
         try {
             session.update(pessoa);
@@ -97,7 +97,7 @@ public class PessoaHibernate implements PessoaInterfaceDAO {
 
     @Override
     public void deletar(Pessoa pessoa) {
-        session = utill.getSession();
+        session = UTILL.getSession();
         Transaction t = session.beginTransaction();
         try {
             session.delete(pessoa);
@@ -112,7 +112,7 @@ public class PessoaHibernate implements PessoaInterfaceDAO {
     
     @Override
     public List<Pessoa> recuperarTodos() {
-        session = utill.getSession();
+        session = UTILL.getSession();
         List<Pessoa> pessoas = new ArrayList();
         try{
             pessoas = (List) session.createQuery

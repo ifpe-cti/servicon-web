@@ -25,6 +25,7 @@ package br.edu.ifpe.servicon.model.implementacoes.hibernate;
 import br.edu.ifpe.servicon.model.entidades.Profissional;
 import br.edu.ifpe.servicon.model.interfaces.ProfissionalInterfaceDAO;
 import br.edu.ifpe.servicon.model.utill.HibernateUtill;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -35,7 +36,7 @@ import org.hibernate.Transaction;
  */
 public class ProfissionalHibernate implements ProfissionalInterfaceDAO {
     private static ProfissionalHibernate instance = null;
-    private final HibernateUtill utill;
+    private final HibernateUtill UTILL;
     private Session session;
     
     public static ProfissionalHibernate getInstance(){
@@ -46,17 +47,18 @@ public class ProfissionalHibernate implements ProfissionalInterfaceDAO {
     }
 
     public ProfissionalHibernate() {
-        this.utill = HibernateUtill.getInstance();
+        this.UTILL = HibernateUtill.getInstance();
     }
 
     @Override
     public void criar(Profissional profissional) {
-        session = utill.getSession();
+        session = UTILL.getSession();
         Transaction t = session.beginTransaction();
         try{
             session.save(profissional);
             t.commit();
         }catch(Exception addProfissionalException){
+            System.out.println(addProfissionalException.getMessage());
             t.rollback();
         }finally{
             session.close();
@@ -65,11 +67,13 @@ public class ProfissionalHibernate implements ProfissionalInterfaceDAO {
 
     @Override
     public Profissional recuperar(Integer codigo) {
-        session = utill.getSession();
+        session = UTILL.getSession();
         try {
             return (Profissional) session.createQuery
-            ("FROM Profissional WHERE id_profissional = " + codigo).getResultList().get(0);
-        } catch (Exception recProfissionalException) {
+            ("FROM Profissional WHERE id_profissional = " + codigo)
+                    .getResultList().get(0);
+        } catch (Exception readProfissionalException) {
+            System.out.println(readProfissionalException.getMessage());
             return null;
         } finally {
             session.close();
@@ -78,12 +82,13 @@ public class ProfissionalHibernate implements ProfissionalInterfaceDAO {
 
     @Override
     public void atualizar(Profissional profissional) {
-        session = utill.getSession();
+        session = UTILL.getSession();
         Transaction t = session.beginTransaction();
         try {
             session.update(profissional);
             t.commit();
         } catch (Exception updateProfissionalException) {
+            System.out.println(updateProfissionalException.getCause());
             t.rollback();
         } finally {
             session.close();
@@ -92,12 +97,13 @@ public class ProfissionalHibernate implements ProfissionalInterfaceDAO {
 
     @Override
     public void deletar(Profissional profissional) {
-        session = utill.getSession();
+        session = UTILL.getSession();
         Transaction t = session.beginTransaction();
         try {
             session.delete(profissional);
             t.commit();
-        } catch (Exception delProfissionalException) {
+        } catch (Exception dellProfissionalException) {
+            System.out.println(dellProfissionalException.getCause());
             t.rollback();
         } finally {
             session.close();
@@ -106,17 +112,16 @@ public class ProfissionalHibernate implements ProfissionalInterfaceDAO {
 
     @Override
     public List<Profissional> recuperarTodos() {
-        session = utill.getSession();
-        List<Profissional> profissionais = null;
+        session = UTILL.getSession();
+        List<Profissional> profissionais = new ArrayList();
         try {
             profissionais = (List) session.createQuery
                 ("FROM Profissional").getResultList();
-        } catch (Exception recTodosProfissionalException) {
-            return null;
+        } catch (Exception readAllProfissionasException) {
+                System.out.println(readAllProfissionasException.getMessage());
         } finally {
             session.close();
             return profissionais;
         }
     }
-
 }
