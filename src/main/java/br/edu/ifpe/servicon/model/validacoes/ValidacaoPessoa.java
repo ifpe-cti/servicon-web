@@ -39,8 +39,10 @@ public class ValidacaoPessoa {
     }
 
     public void criar(Pessoa pessoa) {
-        if(pessoa.getCodigo() == null)
+         if(((PessoaHibernate)DAO).
+                recuperar(pessoa.getCodigo()) == null){
             this.DAO.criar(pessoa);
+        }
     }
 
     public Pessoa recuperar(Integer codigo) {

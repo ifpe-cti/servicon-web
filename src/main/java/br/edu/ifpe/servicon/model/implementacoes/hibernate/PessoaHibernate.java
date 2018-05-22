@@ -25,6 +25,7 @@ package br.edu.ifpe.servicon.model.implementacoes.hibernate;
 import br.edu.ifpe.servicon.model.entidades.Pessoa;
 import br.edu.ifpe.servicon.model.interfaces.PessoaInterfaceDAO;
 import br.edu.ifpe.servicon.model.utill.HibernateUtill;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -33,13 +34,14 @@ import org.hibernate.Transaction;
  *
  * @author Lucas Mendes <lucas.mendes147@live.com>
  */
-public class PessoaHibernate implements PessoaInterfaceDAO{
+public class PessoaHibernate implements PessoaInterfaceDAO {
+
     private static PessoaHibernate instance = null;
     private final HibernateUtill utill;
     private Session session;
-    
-    public static PessoaHibernate getInstance(){
-        if(instance == null){
+
+    public static PessoaHibernate getInstance() {
+        if (instance == null) {
             instance = new PessoaHibernate();
         }
         return instance;
@@ -47,40 +49,79 @@ public class PessoaHibernate implements PessoaInterfaceDAO{
 
     public PessoaHibernate() {
         this.utill = HibernateUtill.getInstance();
-    }  
+    }
 
     @Override
     public void criar(Pessoa pessoa) {
         session = utill.getSession();
         Transaction t = session.beginTransaction();
-        try{
-            session.saveOrUpdate(pessoa);
+        try {
+            session.save(pessoa);
             t.commit();
-        }catch(Exception addPessoaException){
+        } catch (Exception addPessoaException) {
+            System.out.println(addPessoaException.getMessage());
             t.rollback();
-        }finally{
+        } finally {
             session.close();
         }
     }
 
     @Override
     public Pessoa recuperar(Integer codigo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            session = utill.getSession();
+            return (Pessoa) session.createQuery
+                ("FROM Pessoa where id_pessoa=" + codigo).getResultList();
+        } catch (Exception readPessoaException) {
+            System.out.println(readPessoaException.getMessage());
+            return null;
+        } finally {
+            session.close();
+        }
     }
 
     @Override
     public void atualizar(Pessoa pessoa) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session = utill.getSession();
+        Transaction t = session.beginTransaction();
+        try {
+            session.update(pessoa);
+            t.commit();
+        } catch (Exception updatePessoaException) {
+            System.out.println(updatePessoaException.getMessage());
+            t.rollback();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
     public void deletar(Pessoa pessoa) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<Pessoa> recuperarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        session = utill.getSession();
+        Transaction t = session.beginTransaction();
+        try {
+            session.delete(pessoa);
+            t.commit();
+        } catch (Exception dellPessoaException) {
+            System.out.println(dellPessoaException.getMessage());
+            t.rollback();
+        } finally {
+            session.close();
+        }
     }
     
+    @Override
+    public List<Pessoa> recuperarTodos() {
+        session = utill.getSession();
+        List<Pessoa> pessoas = new ArrayList();
+        try{
+            pessoas = (List) session.createQuery
+            ("FROM pessoa").getResultList();
+        }catch(Exception readAllPessoasException){
+            System.out.println(readAllPessoasException.getMessage());
+        }finally{
+            session.close();
+            return pessoas;
+        }
+    }
 }

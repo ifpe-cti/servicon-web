@@ -49,7 +49,7 @@ public class EnderecoHibernate implements EnderecoInterfaceDAO {
         session = utill.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            session.saveOrUpdate(endereco);
+            session.save(endereco);
             transaction.commit();
         } catch (Exception createEnderecoException) {
             System.out.println(createEnderecoException.getMessage());
