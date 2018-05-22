@@ -64,7 +64,7 @@ public class ProfissionalHibernate implements ProfissionalInterfaceDAO {
     }
 
     @Override
-    public Profissional recuperar(int codigo) {
+    public Profissional recuperar(Integer codigo) {
         session = utill.getSession();
         try {
             return (Profissional) session.createQuery

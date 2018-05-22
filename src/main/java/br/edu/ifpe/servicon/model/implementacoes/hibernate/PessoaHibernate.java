@@ -64,7 +64,7 @@ public class PessoaHibernate implements PessoaInterfaceDAO{
     }
 
     @Override
-    public Pessoa recuperar(int codigo) {
+    public Pessoa recuperar(Integer codigo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
